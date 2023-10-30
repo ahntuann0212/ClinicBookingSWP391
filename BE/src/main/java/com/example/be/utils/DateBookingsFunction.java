@@ -1,11 +1,12 @@
 package com.example.be.utils;
 
+import com.example.be.entities.Booking;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import com.example.be.entities.Booking;
 
 public class DateBookingsFunction {
 
