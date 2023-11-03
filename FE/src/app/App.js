@@ -91,7 +91,7 @@ class App extends Component {
   handleLogin() {
     notification.success({
       message: 'Booking Clinic',
-      description: "Bạn đăng nhập thành công !",
+      description: "Login Successful !",
     });
     this.loadCurrentUser();
     this.props.history.push("/");
