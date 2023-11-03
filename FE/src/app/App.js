@@ -72,7 +72,7 @@ class App extends Component {
     this.loadCurrentUser();
   }
 
-  handleLogout(redirectTo = "/", notificationType = "success", description = "Bạn đăng xuất thành công") {
+  handleLogout(redirectTo = "/", notificationType = "success", description = "You have successfully logged out!") {
     localStorage.removeItem(ACCESS_TOKEN);
     this.props.getUser();
     this.setState({
