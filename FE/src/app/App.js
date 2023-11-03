@@ -72,7 +72,7 @@ class App extends Component {
     this.loadCurrentUser();
   }
 
-  handleLogout(redirectTo = "/", notificationType = "success", description = "Bạn đăng xuất thành công") {
+  handleLogout(redirectTo = "/", notificationType = "success", description = "You have successfully logged out!") {
     localStorage.removeItem(ACCESS_TOKEN);
     this.props.getUser();
     this.setState({
@@ -91,7 +91,7 @@ class App extends Component {
   handleLogin() {
     notification.success({
       message: 'Booking Clinic',
-      description: "Bạn đăng nhập thành công !",
+      description: "Login Successful !",
     });
     this.loadCurrentUser();
     this.props.history.push("/");
