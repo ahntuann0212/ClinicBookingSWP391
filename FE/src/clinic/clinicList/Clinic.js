@@ -160,7 +160,7 @@ class Clinic extends Component {
             } else {
                 notification.error({
                     message: 'Booking Clinic',
-                    description: 'Thêm giá cho phòng khám thất bại !'
+                    description: 'Add prices for failed clinics !'
                 });
             }
         })
@@ -218,7 +218,7 @@ class Clinic extends Component {
         } else {
             notification.error({
                 message: 'Booking Clinic',
-                description: 'Xin lỗi bạn ! Bạn chưa đăng nhập !'
+                description: "I'm sorry ! You are not logged in !"
             });
         }
 
