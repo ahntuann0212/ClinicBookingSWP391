@@ -475,7 +475,7 @@ class Clinic extends Component {
 
                 notification.error({
                     message: 'Booking Clinic',
-                    description: 'Xin lỗi bạn ! Email không tồn tại !'
+                    description: "I'm sorry ! Email does not exist !"
                 });
             }
 
