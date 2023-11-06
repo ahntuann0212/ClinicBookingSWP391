@@ -31,7 +31,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: null,
+      currentUser: null, //Current users
       currentRates: [],
       idcurrentUser: '',
       isAuthenticated: false,
