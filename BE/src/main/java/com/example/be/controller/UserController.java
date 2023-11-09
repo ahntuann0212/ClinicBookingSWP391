@@ -25,7 +25,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
-public class gitUserController {
+public class UserController {
 	
 	@Autowired
 	UserService userservice;
@@ -78,7 +78,7 @@ public class gitUserController {
 		return new Data(Constant.GET_LIST_USER_UNSUCCESS,HttpStatus.BAD_REQUEST.value(),users);
 	}
 	
-	@RequestMapping(value= "doctor", method = RequestMethod.PUT, produces = "application/json")
+	@RequestMapping(value= "doctor", method = RequestMethod.POST, produces = "application/json")
 	public ResponseEntity<?> registerDoctor(@CurrentUser UserPrincipal currentUser, @Valid @RequestBody DoctorRegisterRequest doctorRegisterRequest){
 		DataResponse data =  userservice.updateUser(currentUser.getId(), doctorRegisterRequest);
 		
@@ -118,7 +118,7 @@ public class gitUserController {
 		return userservice.geUserprofile(currentUser.getId());
 	}
 	
-	@RequestMapping(value= "update", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value= "update", method = RequestMethod.PUT, produces = "application/json")
 	public ResponseEntity<?> updateUserUpdate(@Valid @RequestBody UserUpdate userUpdate){
 		DataResponse data =  userservice.updateUserUpdate(userUpdate);
 		
