@@ -1,9 +1,5 @@
-
 package com.example.be.controller;
 
-import com.example.be.payload.Data;
-import com.example.be.payload.DataResponse;
-import com.example.be.services.ExpertCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +7,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.be.payload.Data;
+import com.example.be.payload.DataResponse;
+import com.example.be.services.ExpertCodeService;
 
 @RestController
 @RequestMapping("api/expert-token")
