@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './NewClinic.css';
-import { Form, Input, Button, Select, notification, Upload, Icon, Modal, Row, Col ,message} from 'antd';
+import { Form, Input, Button, Select, notification, Upload, Icon, Modal, Row, Col, message } from 'antd';
 import {
     NAME_MIN_LENGTH, NAME_MAX_LENGTH,
     ADDRESS_MAX_LENGTH,
@@ -34,11 +34,11 @@ function getBase64Logo(img, callback) {
 function beforeUploadLogo(file) {
     const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
     if (!isJpgOrPng) {
-      message.error('You can only upload JPG/PNG file!');
+        message.error('You can only upload JPG/PNG file!');
     }
     const isLt2M = file.size / 1024 / 1024 < 2;
     if (!isLt2M) {
-      message.error('Image must smaller than 2MB!');
+        message.error('Image must smaller than 2MB!');
     }
     return isJpgOrPng && isLt2M;
 }
@@ -67,7 +67,7 @@ class NewClinic extends Component {
 
             ],
             distrit: "BA ĐÌNH",
-            nameDistrit: "",
+            nameDistrit: "Hà Nội",
             nameProvince: "",
         };
 
@@ -120,7 +120,7 @@ class NewClinic extends Component {
         };
 
         postImageLogoClinic(this.state.imageLogo);
-        
+
         this.state.fileList.forEach(x => {
             postImageClinic(x.originFileObj)
         });
@@ -264,25 +264,17 @@ class NewClinic extends Component {
     };
 
     handleChangeImgeLogo = info => {
-        if (info.file.status === 'uploading') {
-          this.setState({ loading: true });
-          return;
-        }
-        if (info.file.status === 'done') {
-            if (info.file.status === 'done') {
-                // Get this url from response in real world.
-                getBase64Logo(info.file.originFileObj, imageUrlLogo =>
-                  this.setState({
-                    imageUrlLogo,
-                    loading: false,
-                  }),
-                );
-            }
+        // Get this url from response in real world.
+        getBase64Logo(info.file.originFileObj, imageUrlLogo =>
             this.setState({
-                imageLogo : info.file.originFileObj,
+                imageUrlLogo,
                 loading: false,
-            });
-        }
+            }),
+        );
+        this.setState({
+            imageLogo: info.file.originFileObj,
+            loading: false,
+        });
     };
 
     render() {
@@ -291,7 +283,7 @@ class NewClinic extends Component {
         const { previewVisible, previewImage, fileList } = this.state;
         let provinces = this.props.province.province;
         let distrits = this.props.distrits.distrits;
-        
+
         const uploadButton = (
             <div>
                 <Icon type="plus" />
@@ -345,7 +337,6 @@ class NewClinic extends Component {
                                     listType="picture-card"
                                     className="avatar-uploader"
                                     showUploadList={false}
-                                    action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
                                     beforeUpload={beforeUploadLogo}
                                     onChange={this.handleChangeImgeLogo}
                                 >
@@ -426,7 +417,7 @@ class NewClinic extends Component {
                         </FormItem>
 
                         <FormItem>
-                            <Button type="primary"
+                            <Button type="primary" style={{marginTop : '50px'}}
                                 className="btn-dang-ky signup-form-button"
                                 htmlType="submit"
                                 size="large"

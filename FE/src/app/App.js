@@ -25,13 +25,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Clinic from '../clinic/clinicList/Clinic';
 import { getUser } from "../actions/get.user.action";
 import SearchClinicAddress from '../clinic/search/SearchClinicAddress';
+import Resetpass from '../user/resetpassword/Resetpass';
+import changepassword from '../user/changepassword/changepassword';
 const { Content } = Layout;
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: null, //User immediately after logging in
+      currentUser: null,
       currentRates: [],
       idcurrentUser: '',
       isAuthenticated: false,
@@ -72,7 +74,7 @@ class App extends Component {
     this.loadCurrentUser();
   }
 
-  handleLogout(redirectTo = "/", notificationType = "success", description = "You have successfully logged out!") {
+  handleLogout(redirectTo = "/", notificationType = "success", description = "Bạn đăng xuất thành công") {
     localStorage.removeItem(ACCESS_TOKEN);
     this.props.getUser();
     this.setState({
@@ -91,7 +93,7 @@ class App extends Component {
   handleLogin() {
     notification.success({
       message: 'Booking Clinic',
-      description: "Login Successful !",
+      description: "Bạn đăng nhập thành công !",
     });
     this.loadCurrentUser();
     this.props.history.push("/");
@@ -126,7 +128,8 @@ class App extends Component {
               </Route>
 
               <Route path="/signup" component={Signup}></Route>
-
+              <Route path="/resetpass" component={Resetpass}></Route>
+              <Route path="/users/changepassword" component={changepassword}></Route>
               <Route path="/users/:username"
                 render={(props) => <Profile isAuthenticated={this.state.isAuthenticated} currentUser={this.state.currentUser} {...props} />}>
               </Route>

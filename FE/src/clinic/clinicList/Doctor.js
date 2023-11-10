@@ -770,7 +770,6 @@ class DoctorClinic extends Component {
                                                     </div>
                                                     <div className="modal-area-commnet">
                                                         <TextArea className="text-area-commnet" placeholder="Viết bình luận ..."
-                                                            autosize={{ minRows: 2, maxRows: 3 }}
                                                             name='contentCommnet'
                                                             value={this.state.contentCommnet.value}
                                                             onChange={(event) => this.handleInputChange(event)} />
@@ -794,9 +793,6 @@ class DoctorClinic extends Component {
                                                     }
 
                                                 </div>
-                                            </TabPane>
-                                            <TabPane className="modal-btn-ra" tab="Cá Nhân" key="2">
-                                                Content of Tab Pane 2
                                             </TabPane>
                                         </Tabs>
                                     </div>
