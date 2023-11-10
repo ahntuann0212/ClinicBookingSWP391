@@ -282,6 +282,9 @@ function ProfileDropdownMenu(props) {
       <Menu.Item key="profile" className="dropdown-item">
         <Link to={`/users/${props.currentUser.username}`}>Profile</Link>
       </Menu.Item>
+      <Menu.Item key="changepassword" className="dropdown-item">
+        <Link to={`/users/changepassword`}>Change Password</Link>
+      </Menu.Item>
       <Menu.Item key="logout" className="dropdown-item">
         Logout
       </Menu.Item>
