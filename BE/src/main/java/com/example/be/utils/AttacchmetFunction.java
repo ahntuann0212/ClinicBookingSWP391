@@ -1,10 +1,10 @@
 package com.example.be.utils;
 
-import com.example.be.entities.Attachment;
-import com.example.be.entities.AttachmentType;
-
 import java.util.HashSet;
 import java.util.Set;
+
+import com.example.be.entities.Attachment;
+import com.example.be.entities.AttachmentType;
 
 public class AttacchmetFunction {
 
@@ -19,7 +19,7 @@ public class AttacchmetFunction {
 		}
 		return attachmentClinics;
 	}
-	
+
 	public static  Attachment getAttachmentPerson (Set<Attachment> attachments, String typePhoto){
 		Attachment attachmentp = new Attachment();
 		@SuppressWarnings("unused")

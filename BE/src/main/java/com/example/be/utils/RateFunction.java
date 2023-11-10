@@ -1,12 +1,12 @@
 package com.example.be.utils;
 
-import com.example.be.dto.RateResponse;
-import com.example.be.entities.Rate;
-import com.example.be.entities.enums.NumberStar;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
+import com.example.be.dto.RateResponse;
+import com.example.be.entities.Rate;
+import com.example.be.entities.enums.NumberStar;
 
 public class RateFunction {
 
@@ -30,14 +30,14 @@ public class RateFunction {
 				oneRate++;
 			}
 		}
-		
+
 		Double sumRate = (double) (fiveRate + fourRate + threeRate + twoRate + oneRate);
 		if(sumRate == 0) {
 			countRate = 1.0;
 		}else {
 			countRate = (5.0*fiveRate + 4.0*fourRate + 3.0*threeRate + 2.0*twoRate + 1.0*oneRate) / sumRate;
 		}
-		
+
 		if(countRate>= 0.5 && countRate <1) {
 			countRate = 0.5;
 		}else if(countRate >=1.5 && countRate < 2) {
@@ -51,8 +51,8 @@ public class RateFunction {
 		}
 		return countRate;
 	}
-	
-	
+
+
 	public static List<RateResponse> getRateResponses(Set<Rate> rateExperts) {
 		List<RateResponse> rateResponses = new ArrayList<RateResponse>();
 		for (Rate rate : rateExperts) {

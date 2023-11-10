@@ -1,12 +1,12 @@
 package com.example.be.utils;
+import org.springframework.http.HttpStatus;
 
 import com.example.be.entities.User;
 import com.example.be.payload.Data;
 import com.example.be.services.UserService;
-import org.springframework.http.HttpStatus;
 
 public class ConfirmCode {
-	
+
 	private static UserService userService;
 
 	public static Data checkConfirmCode(String token) {
