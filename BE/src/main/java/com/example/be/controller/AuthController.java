@@ -1,5 +1,12 @@
 package com.example.be.controller;
 
+import java.net.URI;
+import java.util.Collections;
+
+import javax.validation.Valid;
+
+import com.example.be.dto.LoginRequest;
+import com.example.be.dto.SignUpRequest;
 import com.example.be.entities.Role;
 import com.example.be.entities.User;
 import com.example.be.payload.ApiResponse;
@@ -24,15 +31,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.validation.Valid;
-import java.net.URI;
-import java.util.Collections;
-
 
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-	@Autowired
+    @Autowired
     AuthenticationManager authenticationManager;
 
     @Autowired
@@ -40,46 +43,46 @@ public class AuthController {
 
     @Autowired
     RoleService roleService;
-    
+
     @Autowired
     PasswordEncoder passwordEncoder;
 
     @Autowired
     JwtTokenProvider tokenProvider;
-	    
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@RequestMapping(value = "/signin", method = RequestMethod.POST)
-	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest){
-		Boolean isAvailableUsername = userService.existsByUsername(loginRequest.getUsernameOrEmail());
-		Boolean isAvailableEmail = userService.existsByEmail(loginRequest.getUsernameOrEmail());
-		
-		if(!(isAvailableUsername || isAvailableEmail)) {
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @RequestMapping(value = "/signin", method = RequestMethod.POST)
+    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest){
+        Boolean isAvailableUsername = userService.existsByUsername(loginRequest.getUsernameOrEmail());
+        Boolean isAvailableEmail = userService.existsByEmail(loginRequest.getUsernameOrEmail());
+
+        if(!(isAvailableUsername || isAvailableEmail)) {
             return new ResponseEntity(new DataResponse(false, new Data(Constant.USERNAME_OR_PASWORD_NO_EXIST,HttpStatus.BAD_REQUEST.value())),
                     HttpStatus.BAD_REQUEST);
         }
 
-		Authentication authentication = authenticationManager.authenticate(
+        Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         loginRequest.getUsernameOrEmail(),
                         loginRequest.getPassword()
                 )
         );
-		
+
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String jwt = tokenProvider.generateToken(authentication);
         return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
-	}
+    }
 
-	@RequestMapping(value="/signup", method = RequestMethod.POST)
-	public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest){
-		
-		if(userService.existsByUsername(signUpRequest.getUsername())) {
+    @RequestMapping(value="/signup", method = RequestMethod.POST)
+    public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest){
+
+        if(userService.existsByUsername(signUpRequest.getUsername())) {
             return ResponseEntity.badRequest().body(new ApiResponse(false, Constant.USERNAME_USER_EXIST));
         }
 
         if(userService.existsByEmail(signUpRequest.getEmail())) {
-        	return ResponseEntity.badRequest().body(new ApiResponse(false, Constant.EMAIL_USER_EXIST));
+            return ResponseEntity.badRequest().body(new ApiResponse(false, Constant.EMAIL_USER_EXIST));
         }
 
         // Creating user's account
@@ -89,7 +92,7 @@ public class AuthController {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         Role userRole = roleService.getRoleByName(Constant.USER);
-               
+
         user.setRoles(Collections.singleton(userRole));
 
         User result = userService.save(user);
@@ -100,5 +103,5 @@ public class AuthController {
 
         return ResponseEntity.created(location).body(new ApiResponse(true, "User registered successfully"));
     }
-	
+
 } 

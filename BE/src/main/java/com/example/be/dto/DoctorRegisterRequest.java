@@ -1,44 +1,40 @@
-gitpackage com.example.be.dto;
-
-import com.example.be.entities.Degree;
-import com.example.be.entities.Faculty;
-import com.example.be.entities.enums.UserGender;
-
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+package com.example.be.dto;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import com.example.be.entities.Degree;
+import com.example.be.entities.Faculty;
+import com.example.be.entities.enums.UserGender;
 
 public class DoctorRegisterRequest {
 
 	@Size(min = 1, max = 30)
 	@NotNull(message = "Please provide a fullname")
 	private String fullName;
-	
-	@NotNull(message = "Please provide a TokenCode")
-	private String tokenCode;
 
 	private Date birthday;
-	
+
 	private UserGender gender;
-	
+
 	private Integer age;
-	
+
 	@Size(max = 100)
 	private String address;
-	
+
 	@Size(max = 20)
 	private String mobile;
-	
+
 	private String about;
-	
+
 	private Set<Faculty> faculties = new HashSet<>();
-	
+
 	private Set<Degree> degrees = new HashSet<>();
-	
+
 	public DoctorRegisterRequest() {
-		
+
 	}
 
 	public String getAbout() {
@@ -57,13 +53,13 @@ public class DoctorRegisterRequest {
 		this.fullName = fullName;
 	}
 
-	public String getTokenCode() {
-		return tokenCode;
-	}
-
-	public void setTokenCode(String tokenCode) {
-		this.tokenCode = tokenCode;
-	}
+//	public String getTokenCode() {
+//		return tokenCode;
+//	}
+//
+//	public void setTokenCode(String tokenCode) {
+//		this.tokenCode = tokenCode;
+//	}
 
 	public Date getBirthday() {
 		return birthday;
