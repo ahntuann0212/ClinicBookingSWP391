@@ -1,6 +1,25 @@
 package com.example.be.controller;
 
+import java.net.URI;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+
 import com.example.be.dto.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
 import com.example.be.entities.User;
 import com.example.be.payload.ApiResponse;
 import com.example.be.payload.Data;
@@ -11,18 +30,6 @@ import com.example.be.services.EmailService;
 import com.example.be.services.UserService;
 import com.example.be.utils.ConfirmCode;
 import com.example.be.utils.Constant;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import java.net.URI;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
@@ -76,10 +83,10 @@ public class UserController {
 	@RequestMapping(value ="changepassword", method = RequestMethod.POST, produces = "application/json")
 	public ResponseEntity<?> updatePassword(@RequestBody UserUpdatePassword userUpdatePassword){
 		User user = userservice.findByEmail(userUpdatePassword.getEmail()).get();
-		if(user.getPassword().equals(passwordEncoder.encode(userUpdatePassword.getOldpass()))){
+		if(passwordEncoder.matches(userUpdatePassword.getOldpass(), user.getPassword())){
 			user.setPassword(passwordEncoder.encode(userUpdatePassword.getPassword()));
 			userservice.save(user);
-			return new ResponseEntity<>(user, HttpStatus.OK);
+			return ResponseEntity.ok(user);
 		}
 		else {
 			return ResponseEntity.badRequest().build();
