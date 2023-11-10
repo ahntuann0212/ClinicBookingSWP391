@@ -1,9 +1,9 @@
 package com.example.be.dto;
 
+import com.example.be.entities.User;
+
 import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
-
-import com.example.be.entities.User;
 
 public class UserRequestChangePassword {
 	

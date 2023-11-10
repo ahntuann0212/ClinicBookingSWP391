@@ -1,15 +1,11 @@
 package com.example.be.dto;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import com.example.be.entities.Attachment;
 import com.example.be.entities.Degree;
 import com.example.be.entities.Faculty;
 import com.example.be.entities.enums.UserGender;
+
+import java.util.*;
 
 public class UserResponceClinic {
 	private String id;

@@ -1,10 +1,9 @@
 package com.example.be.dto;
 
-import java.util.Date;
+import org.hibernate.annotations.Type;
 
 import javax.validation.constraints.Size;
-
-import org.hibernate.annotations.Type;
+import java.util.Date;
 
 public class UserUpdate {
 	

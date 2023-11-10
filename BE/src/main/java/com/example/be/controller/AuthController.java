@@ -1,6 +1,5 @@
 package com.example.be.controller;
 
-import com.example.be.dto.SignUpRequest;
 import com.example.be.entities.Role;
 import com.example.be.entities.User;
 import com.example.be.payload.ApiResponse;

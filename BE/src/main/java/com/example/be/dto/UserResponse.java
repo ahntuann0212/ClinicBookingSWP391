@@ -1,17 +1,13 @@
 package com.example.be.dto;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import com.example.be.entities.Attachment;
 import com.example.be.entities.Clinic;
 import com.example.be.entities.Role;
 import com.example.be.entities.User;
 import com.example.be.entities.enums.UserGender;
 import com.example.be.utils.AttacchmetFunction;
+
+import java.util.*;
 
 public class UserResponse {
 	private String id;
