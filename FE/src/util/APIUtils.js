@@ -65,6 +65,22 @@ export function signup(signupRequest) {
     });
 }
 
+export function resetpassword(signupRequest) {
+    return request({
+        url: API_BASE_URL + "/user/forgot",
+        method: 'POST',
+        body: JSON.stringify(signupRequest)
+    });
+}
+
+export function updatepassword(signupRequest) {
+    return request({
+        url: API_BASE_URL + "/user/changepassword",
+        method: 'POST',
+        body: JSON.stringify(signupRequest)
+    });
+}
+
 export function checkUsernameAvailability(username) {
     return request({
         url: API_BASE_URL + "/user/checkUsernameAvailability?username=" + username,
