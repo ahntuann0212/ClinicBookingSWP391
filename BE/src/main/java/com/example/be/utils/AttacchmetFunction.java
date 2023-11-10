@@ -1,10 +1,10 @@
 package com.example.be.utils;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import com.example.be.entities.Attachment;
 import com.example.be.entities.AttachmentType;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class AttacchmetFunction {
 

@@ -3,7 +3,6 @@ package com.example.be.utils;
 import com.example.be.dto.BookingResponse;
 import com.example.be.dto.CommentResponse;
 import com.example.be.dto.RateResponse;
-import com.example.be.dto.UserResponceClinic;
 import com.example.be.entities.*;
 
 import java.util.ArrayList;

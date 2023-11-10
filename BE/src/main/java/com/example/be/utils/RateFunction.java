@@ -1,12 +1,12 @@
 package com.example.be.utils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
 import com.example.be.dto.RateResponse;
 import com.example.be.entities.Rate;
 import com.example.be.entities.enums.NumberStar;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public class RateFunction {
 

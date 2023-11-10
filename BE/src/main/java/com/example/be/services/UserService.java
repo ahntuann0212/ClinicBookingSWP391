@@ -1,8 +1,6 @@
 package com.example.be.services;
 
 import com.example.be.dto.DoctorRegisterRequest;
-import com.example.be.dto.UserResponse;
-import com.example.be.dto.UserUpdate;
 import com.example.be.entities.User;
 import com.example.be.payload.DataResponse;
 

@@ -1,4 +1,4 @@
-package com.example.be.services;
+package com.example.be.utils;
 
 import com.example.be.payload.DataResponse;
 

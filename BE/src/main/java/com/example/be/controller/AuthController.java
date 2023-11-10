@@ -1,11 +1,5 @@
 package com.example.be.controller;
 
-import java.net.URI;
-import java.util.Collections;
-
-import javax.validation.Valid;
-
-import com.example.be.dto.LoginRequest;
 import com.example.be.dto.SignUpRequest;
 import com.example.be.entities.Role;
 import com.example.be.entities.User;
@@ -30,6 +24,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import javax.validation.Valid;
+import java.net.URI;
+import java.util.Collections;
 
 
 @RestController
