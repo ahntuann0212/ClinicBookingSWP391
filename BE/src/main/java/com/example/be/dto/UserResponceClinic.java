@@ -1,67 +1,71 @@
 package com.example.be.dto;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import com.example.be.entities.Attachment;
 import com.example.be.entities.Degree;
 import com.example.be.entities.Faculty;
 import com.example.be.entities.enums.UserGender;
 
-import java.util.*;
-
 public class UserResponceClinic {
 	private String id;
-	
+
 	private Date createAt;
-	
+
 	private Date updateAt;
-	
+
 	private String createdBy;
-	
+
 	private String updatedBy  ;
-	
+
 	private String deletedBy ;
-	
+
 	private String username;
-	
+
 	private String fullName;
-	
+
 	private Date birthday;
-	
+
 	private UserGender gender;
-	
+
 	private Integer age;
-	
+
 	private Integer badPoint;
-	
+
 	private String email;
-	
+
 	private String address;
-	
+
 	private String mobile;
-	
+
 	private String about;
-	
+
 	private String facebook;
-	
+
 	private String code;
-	
+
 	private Attachment attachmentPerson ;
-	
+
 	private Set<Faculty> faculties = new HashSet<>();
-	
+
 	private List<BookingResponse> bookingExperts = new ArrayList<BookingResponse>() ;
-	
+
 	private List<CommentResponse> commentExperts = new ArrayList<CommentResponse>();
-	
+
 	private Set<Degree> degrees = new HashSet<>();
-	
+
 	private List<RateResponse> rateResponses = new ArrayList<RateResponse>();
-	
+
 	private List<String> dateBookingDoctors = new ArrayList<String>();
-	
+
 	private Double countRate;
-	
+
 	public UserResponceClinic() {
-		
+
 	}
 
 	public String getId() {

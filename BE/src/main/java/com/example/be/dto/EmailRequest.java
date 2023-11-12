@@ -5,15 +5,15 @@ import javax.validation.constraints.Size;
 
 
 public class EmailRequest {
-	
+
 	@Email(message = "The email is not properly formatted")
 	@Size(min = 1, max = 40)
 	private String email;
 
 	public EmailRequest() {
-		
+
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -21,5 +21,5 @@ public class EmailRequest {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 }

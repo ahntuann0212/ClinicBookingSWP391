@@ -1,21 +1,21 @@
 package com.example.be.dto;
 
 public class UserSummary {
-	
-	private String id;
-	
+
+    private String id;
+
     private String username;
-    
+
     private String fullName;
 
     public UserSummary(String id, String username, String fullName) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.fullName = fullName;
-	}
+        super();
+        this.id = id;
+        this.username = username;
+        this.fullName = fullName;
+    }
 
-	public String getId() {
+    public String getId() {
         return id;
     }
 
@@ -31,12 +31,12 @@ public class UserSummary {
         this.username = username;
     }
 
-	public String getFullName() {
-		return fullName;
-	}
+    public String getFullName() {
+        return fullName;
+    }
 
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
 }

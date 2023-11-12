@@ -1,9 +1,9 @@
 package com.example.be.dto;
 
 public class UserClinicView {
-	
+
 	private String idUser;
-	
+
 	private String idClinic;
 
 	public UserClinicView(String idUser, String idClinic) {
@@ -31,5 +31,5 @@ public class UserClinicView {
 	public void setIdClinic(String idClinic) {
 		this.idClinic = idClinic;
 	}
-	
+
 }

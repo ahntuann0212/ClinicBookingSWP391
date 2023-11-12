@@ -1,5 +1,11 @@
 package com.example.be.dto;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import com.example.be.entities.Attachment;
 import com.example.be.entities.Clinic;
 import com.example.be.entities.Role;
@@ -7,31 +13,29 @@ import com.example.be.entities.User;
 import com.example.be.entities.enums.UserGender;
 import com.example.be.utils.AttacchmetFunction;
 
-import java.util.*;
-
 public class UserResponse {
 	private String id;
-	
+
 	private String username;
 
 	private String fullName;
-	
+
 	private Date birthday;
-	
+
 	private UserGender gender;
-	
+
 	private Integer age;
-	
+
 	private String check;
-	
+
 	private Attachment attachmentPerson ;
-	
+
 	Set<Role> roles = new HashSet<>();
-	
+
 	Set<Clinic> clinic = new HashSet<>();
-	
+
 	List<UserClinicView> clinicViews = new ArrayList<UserClinicView>();
-	
+
 	public UserResponse() {
 		super();
 	}
@@ -53,7 +57,7 @@ public class UserResponse {
 		this.setClinicViews(clinicViews);
 		this.attachmentPerson = attachment;
 	}
-	
+
 	public UserResponse(User user) {
 		this.id = user.getId();
 		this.username = user.getUsername();
@@ -65,7 +69,7 @@ public class UserResponse {
 		Attachment attachment = AttacchmetFunction.getAttachmentPerson(user.getAttachments(), "DAIDIEN");
 		this.attachmentPerson = attachment;
 	}
-	
+
 	public List<UserClinicView> getClinicViews() {
 		return clinicViews;
 	}
@@ -153,5 +157,5 @@ public class UserResponse {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
-	
+
 }

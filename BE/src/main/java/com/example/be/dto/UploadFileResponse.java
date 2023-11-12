@@ -1,13 +1,13 @@
 package com.example.be.dto;
 
 public class UploadFileResponse {
-	
-	private String fileName;
-	
+
+    private String fileName;
+
     private String fileDownloadUri;
-    
+
     private String fileType;
-    
+
     private long size;
 
     public UploadFileResponse(String fileName, String fileDownloadUri, String fileType, long size) {
@@ -22,7 +22,7 @@ public class UploadFileResponse {
         this.fileType = fileType;
         this.size = size;
     }
-    
+
     public String getFileName() {
         return fileName;
     }

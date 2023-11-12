@@ -1,37 +1,38 @@
 package com.example.be.dto;
 
-import org.hibernate.annotations.Type;
-
-import javax.validation.constraints.Size;
 import java.util.Date;
 
+import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Type;
+
 public class UserUpdate {
-	
+
 	private String id;
-	
+
 	@Type(type="text")
 	private String about;
-	
+
 	@Size(max = 20)
 	private String mobile;
-	
+
 	@Size(max = 100)
 	private String address;
-	
+
 	private String fullName;
-	
+
 	private Date birthday;
-	
+
 	@Size(max = 100)
 	private String facebook;
 
-	
+
 	public UserUpdate() {
 		super();
 	}
 
 	public UserUpdate(String id, String about, @Size(max = 20) String mobile, @Size(max = 100) String address,
-			String fullName, Date birthday, @Size(max = 100) String facebook) {
+					  String fullName, Date birthday, @Size(max = 100) String facebook) {
 		super();
 		this.id = id;
 		this.about = about;
@@ -97,5 +98,5 @@ public class UserUpdate {
 	public void setFacebook(String facebook) {
 		this.facebook = facebook;
 	}
-	
+
 }

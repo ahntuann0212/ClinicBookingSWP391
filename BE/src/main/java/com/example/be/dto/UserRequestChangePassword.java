@@ -1,22 +1,22 @@
 package com.example.be.dto;
 
-import com.example.be.entities.User;
-
 import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 
+import com.example.be.entities.User;
+
 public class UserRequestChangePassword {
-	
+
 	private String code;
-	
+
 	@NotNull(message = "Please provide a pasword")
-    @Column(unique = true)
+	@Column(unique = true)
 	private String newPassword;
 
 	public UserRequestChangePassword() {
 
 	}
-	
+
 	public UserRequestChangePassword(String code, String newPassword) {
 		this.code = code;
 		this.newPassword = newPassword;
@@ -37,7 +37,7 @@ public class UserRequestChangePassword {
 	public void setNewPassword(String newPassword) {
 		this.newPassword = newPassword;
 	}
-	
+
 	public User setUser(UserRequestChangePassword userRequestChangePassword) {
 		if(userRequestChangePassword != null) {
 			User user = new User(userRequestChangePassword.getCode(), userRequestChangePassword.getNewPassword());

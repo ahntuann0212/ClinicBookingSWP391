@@ -1,77 +1,77 @@
 package com.example.be.dto;
 
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Type;
 import com.example.be.entities.Attachment;
 import com.example.be.entities.Degree;
 import com.example.be.entities.Faculty;
 import com.example.be.entities.enums.UserGender;
-import org.hibernate.annotations.Type;
-
-import javax.validation.constraints.Size;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 public class DoctorResponse {
-	
+
 	private String id;
 
 	private Date createAt;
-	
+
 	private Date updateAt;
-	
+
 	private String createdBy;
-	
+
 	private String updatedBy  ;
-	
+
 	private String deletedBy ;
-	
+
 	private String fullName;
-	
+
 	private Date birthday;
-	
+
 	private UserGender gender;
-	
+
 	private Integer age;
-	
+
 	private String email;
-	
+
 	@Size(max = 100)
 	private String address;
-	
+
 	@Size(max = 20)
 	private String mobile;
-	
+
 	@Type(type="text")
 	private String about;
-	
+
 	@Size(max = 100)
 	private String facebook;
-	
+
 	private Set<Faculty> faculties = new HashSet<>();
-	
+
 	private Set<Degree> degrees = new HashSet<>();
 
 	private ClinicResponse clinicResponse;
-	
-    private Attachment attachment;
-    
-    private Integer countComment;
-	
+
+	private Attachment attachment;
+
+	private Integer countComment;
+
 	private Integer countBooking;
-	
+
 	private Double countRate;
-	
+
 	private String timeBooked;
-	
+
 	public DoctorResponse() {
 		super();
 	}
 
 	public DoctorResponse(String id, Date createAt, Date updateAt, String createdBy, String updatedBy, String deletedBy,
-                          String fullName, Date birthday, UserGender gender, Integer age,
-                          String email, @Size(max = 100) String address, @Size(max = 20) String mobile, String about,
-                          @Size(max = 100) String facebook, ClinicResponse clinicResponse,
-                          Set<Faculty> faculties, Set<Degree> degrees, Attachment attachment, Integer countComment, Integer countBooking, Double countRate) {
+						  String fullName, Date birthday, UserGender gender, Integer age,
+						  String email, @Size(max = 100) String address, @Size(max = 20) String mobile, String about,
+						  @Size(max = 100) String facebook, ClinicResponse clinicResponse,
+						  Set<Faculty> faculties, Set<Degree> degrees, Attachment attachment,Integer countComment,Integer countBooking,Double countRate) {
 		super();
 		this.id = id;
 		this.createAt = createAt;
@@ -98,10 +98,10 @@ public class DoctorResponse {
 	}
 
 	public DoctorResponse(String id, Date createAt, Date updateAt, String createdBy, String updatedBy, String deletedBy,
-                          String fullName, Date birthday, UserGender gender, Integer age,
-                          String email, @Size(max = 100) String address, @Size(max = 20) String mobile, String about,
-                          @Size(max = 100) String facebook, ClinicResponse clinicResponse,
-                          Set<Faculty> faculties, Set<Degree> degrees, Attachment attachment, Integer countComment, Integer countBooking, Double countRate, String timeBooked) {
+						  String fullName, Date birthday, UserGender gender, Integer age,
+						  String email, @Size(max = 100) String address, @Size(max = 20) String mobile, String about,
+						  @Size(max = 100) String facebook, ClinicResponse clinicResponse,
+						  Set<Faculty> faculties, Set<Degree> degrees, Attachment attachment,Integer countComment,Integer countBooking,Double countRate,String timeBooked) {
 		super();
 		this.id = id;
 		this.createAt = createAt;
@@ -127,11 +127,11 @@ public class DoctorResponse {
 		this.countRate = countRate;
 		this.timeBooked = timeBooked;
 	}
-	
-	
+
+
 	public DoctorResponse(String id, Date createAt, Date updateAt, String createdBy, String updatedBy, String deletedBy,
-                          String fullName, Date birthday, UserGender gender, String email, @Size(max = 100) String address,
-                          @Size(max = 20) String mobile, String about, @Size(max = 100) String facebook, Attachment attachment) {
+						  String fullName, Date birthday, UserGender gender, String email, @Size(max = 100) String address,
+						  @Size(max = 20) String mobile, String about, @Size(max = 100) String facebook, Attachment attachment) {
 		super();
 		this.id = id;
 		this.createAt = createAt;
@@ -333,5 +333,5 @@ public class DoctorResponse {
 	public void setDegrees(Set<Degree> degrees) {
 		this.degrees = degrees;
 	}
-	
+
 }
