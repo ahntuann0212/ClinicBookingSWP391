@@ -1,27 +1,28 @@
 package com.example.be.dto;
 
-import com.example.be.entities.Faculty;
-
-import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.validation.constraints.NotNull;
+
+import com.example.be.entities.Faculty;
+
 public class ClinicRequest {
-	
+
 	@NotNull(message = "Hãy Nhập nhập tên phòng khám !")
 	private String name;
-	
+
 	@NotNull(message = "Hãy Nhập nhập địa chỉ phòng khám !")
 	private String address;
-	
+
 	private String latitude;
-	
+
 	private String longitude;
 
 	private String addressQuery ;
-	
+
 	private Set<Faculty> faculties = new HashSet<>();
-	
+
 	public String getName() {
 		return name;
 	}
@@ -69,5 +70,5 @@ public class ClinicRequest {
 	public void setFaculties(Set<Faculty> faculties) {
 		this.faculties = faculties;
 	}
-	
+
 }

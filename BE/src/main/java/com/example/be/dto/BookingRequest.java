@@ -4,36 +4,36 @@ import java.sql.Date;
 
 public class BookingRequest {
 	private String idDoctor;
-	
+
 	private String idClinic;
-	
+
 	private Date dateBooking;
-	
+
 	private String startTimeMorning;
-	
+
 	private String endTimeMorning;
-	
+
 	private String distanceMorning;
 
 	private String startTimeAfternoon;
-	
+
 	private String endTimeAfternoon;
-	
+
 	private String distanceAfternoon;
-	
+
 	private String startTimeEverning;
-	
+
 	private String endTimeEverning;
-	
+
 	private String distanceEverning;
-	
+
 	public BookingRequest() {
 		super();
 	}
-	
+
 	public BookingRequest(String idDoctor, String idClinic, Date dateBooking, String startTimeMorning,
-			String endTimeMorning, String distanceMorning, String startTimeAfternoon, String endTimeAfternoon,
-			String distanceAfternoon, String startTimeEverning, String endTimeEverning, String distanceEverning) {
+						  String endTimeMorning, String distanceMorning, String startTimeAfternoon, String endTimeAfternoon,
+						  String distanceAfternoon, String startTimeEverning, String endTimeEverning, String distanceEverning) {
 		super();
 		this.idDoctor = idDoctor;
 		this.idClinic = idClinic;

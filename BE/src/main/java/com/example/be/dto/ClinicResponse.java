@@ -1,26 +1,26 @@
 package com.example.be.dto;
 
-import com.example.be.entities.Clinic;
-import com.example.be.entities.Faculty;
-
 import java.util.HashSet;
 import java.util.Set;
 
+import com.example.be.entities.Clinic;
+import com.example.be.entities.Faculty;
+
 public class ClinicResponse {
-	
+
 	private String id;
-	
+
 	private String name;
-	
+
 	private String address;
-	
+
 	private String latitude;
-	
+
 	private String longitude;
-	
+
 	private Set<Faculty> faculties = new HashSet<>();
 
-	
+
 	public ClinicResponse() {
 		super();
 	}
@@ -33,7 +33,7 @@ public class ClinicResponse {
 		this.faculties = clinic.getFaculties();
 		this.id = clinic.getId();
 	}
-	
+
 	public String getId() {
 		return id;
 	}
@@ -81,5 +81,5 @@ public class ClinicResponse {
 	public void setLongitude(String longitude) {
 		this.longitude = longitude;
 	}
-	
+
 }

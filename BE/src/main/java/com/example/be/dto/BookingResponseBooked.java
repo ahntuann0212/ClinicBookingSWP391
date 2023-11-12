@@ -1,40 +1,40 @@
 package com.example.be.dto;
 
-import com.example.be.entities.enums.UserGender;
-
 import java.sql.Date;
 
+import com.example.be.entities.enums.UserGender;
+
 public class BookingResponseBooked {
-	
+
 	private String id;
-	
+
 	private String namePatient;
-	
+
 	private String namePersonBooking;
-	
+
 	private Date dateBooking;
-	
+
 	private String numberPhone;
-	
+
 	private String pathology;
-	
+
 	private String address;
-	
+
 	private String birthdayYear;
-	
+
 	private String email;
-	
+
 	private UserGender gender;
-	
+
 	private Boolean isExit = false;
-	
+
 	private Boolean isActive = false;
 
 	private String timeBooking;
 
 	private UserResponse userBooked;
-	
-	
+
+
 	public String getId() {
 		return id;
 	}
@@ -146,5 +146,5 @@ public class BookingResponseBooked {
 	public void setTimeBooking(String timeBooking) {
 		this.timeBooking = timeBooking;
 	}
-	
+
 }

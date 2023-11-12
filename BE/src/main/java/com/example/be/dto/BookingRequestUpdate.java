@@ -2,37 +2,37 @@ package com.example.be.dto;
 import com.example.be.entities.enums.UserGender;
 
 public class BookingRequestUpdate {
-	
+
 	private String idBooking;
-	
+
 	private String idDoctor;
-	
+
 	private String nameClinc ;
-	
+
 	private String namePatient;
-	
+
 	private String namePersinBooking;
-	
+
 	private String nameDoctor;
-	
+
 	private String numberPhone;
-	
+
 	private String pathology;
-	
+
 	private String address;
-	
+
 	private String dateBooking;
-	
+
 	private String birthdayYear;
-	
+
 	private String timeBooking;
-	
+
 	private String email;
-	
+
 	private String addressClinic;
-	
+
 	private UserGender gender;
-	
+
 	public BookingRequestUpdate() {
 		super();
 	}
@@ -156,5 +156,5 @@ public class BookingRequestUpdate {
 	public void setGender(UserGender gender) {
 		this.gender = gender;
 	}
-	
+
 }

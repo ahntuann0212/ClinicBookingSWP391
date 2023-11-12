@@ -3,17 +3,17 @@ package com.example.be.dto;
 import java.sql.Date;
 
 public class BookingResponse {
-	
+
 	private String id;
-	
+
 	private Date dateBooking;
-	
+
 	private String timeBooking;
-	
+
 	private Boolean isExit;
 
 	public BookingResponse() {
-		
+
 	}
 
 	public String getId() {

@@ -3,19 +3,19 @@ package com.example.be.dto;
 import java.util.Date;
 
 public class ClinicsRequest {
-	
+
 	private String idClinic;
-	
+
 	private String idDoctor;
 
 	public ClinicsRequest() {
 		super();
 	}
-	
+
 	private Date dateQurey;
-	
+
 	private Date dateCurrent;
-	
+
 	public ClinicsRequest(String idClinic, String idDoctor) {
 		super();
 		this.idClinic = idClinic;
@@ -69,5 +69,5 @@ public class ClinicsRequest {
 	public void setIdDoctor(String idDoctor) {
 		this.idDoctor = idDoctor;
 	}
-	
+
 }

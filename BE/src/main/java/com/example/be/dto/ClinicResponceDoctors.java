@@ -1,44 +1,47 @@
 package com.example.be.dto;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import com.example.be.entities.Attachment;
 import com.example.be.entities.Faculty;
 import com.example.be.entities.Price;
 
-import java.util.*;
-
 public class ClinicResponceDoctors {
-	
+
 	private String id;
-	
+
 	private String name;
-	
+
 	private String address;
-	
+
 	private String latitude;
-	
+
 	private String longitude;
-	
+
 	private Date createAt;
-	
+
 	private String createdBy;
-	
+
 	private Set<Faculty> faculties = new HashSet<>();
-	
+
 	private Set<Price> prices = new HashSet<>();
-	
+
 	private Set<Attachment> photoClinics = new HashSet<>();
-	
+
 	private Attachment photoClinicLogo  ;
-	
+
 	private List<UserResponceClinic> userResponceClinics = new ArrayList<UserResponceClinic>();
-	
+
 	public ClinicResponceDoctors() {
-		
+
 	}
 
 	public ClinicResponceDoctors(String id, String name, String address, String latitude, String longitude,
-                                 Date createAt, String createdBy, Set<Faculty> faculties, Set<Price> prices, Set<Attachment> photoClinics,
-                                 List<UserResponceClinic> userResponceClinics) {
+								 Date createAt, String createdBy, Set<Faculty> faculties, Set<Price> prices, Set<Attachment> photoClinics,
+								 List<UserResponceClinic> userResponceClinics) {
 		this.id = id;
 		this.name = name;
 		this.address = address;
