@@ -200,6 +200,46 @@ export async function  addPostForClinic(post) {
 	return data;
 }
 
+export async function  editPostForClinic(post) {
+	let data = {};
+	await callAPI("posts/edit",'POST',post)
+		.then(response =>{
+			data = Object.assign({}, data);
+			data =  response;
+		})
+	return data;
+}
+
+export async function  editPriceForClinic(param) {
+	let data = {};
+	await callAPI("price/edit",'POST',param)
+		.then(response =>{
+			data = Object.assign({}, data);
+			data =  response;
+		})
+	return data;
+}
+
+export async function  deletePostForClinic(post) {
+	let data = {};
+	await callAPI("posts/delete/" + post.id,'GET')
+		.then(response =>{
+			data = Object.assign({}, data);
+			data =  response;
+		})
+	return data;
+}
+
+export async function  deletePriceForClinic(id) {
+	let data = {};
+	await callAPI("price/delete/" + id,'GET')
+		.then(response =>{
+			data = Object.assign({}, data);
+			data =  response;
+		})
+	return data;
+}
+
 export async function  getPostTypeApi(params) {
 	let data = {};
 
@@ -272,7 +312,7 @@ export async function  sendEmailBooking(booking) {
 
 export async function  sendEmailBookedBusyy(id_booked) {
 	let data = {};
-	await callAPI("send-email/busyy/"+id_booked,'GET')
+	await callAPI("booking/send-email/busyy/"+id_booked,'GET')
 		.then(response =>{
 			data = Object.assign({}, data);
 			data =  response
@@ -323,6 +363,26 @@ export async function  addLichForDoctor(lich) {
 export async function  deleteBookingApi(id) {
 	let data = {};
 	await callAPI("booking/delete/"+id,'POST')
+		.then(response =>{
+			data = Object.assign({}, data);
+			data =  response.data;
+		})
+	return data;
+}
+
+export async function  getAllUsers() {
+	let data = {};
+	await callAPI("user/admin/all",'GET')
+		.then(response =>{
+			data = Object.assign({}, data);
+			data =  response.data;
+		})
+	return data;
+}
+
+export async function  getAllClinics() {
+	let data = {};
+	await callAPI("clinic/all",'GET')
 		.then(response =>{
 			data = Object.assign({}, data);
 			data =  response.data;
