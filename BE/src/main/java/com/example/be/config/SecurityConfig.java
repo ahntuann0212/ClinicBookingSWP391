@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -17,6 +16,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.config.BeanIds;
 
 @Configuration
 @EnableWebSecurity
@@ -26,7 +26,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
         prePostEnabled = true
 )
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	@Autowired
+    @Autowired
     CustomUserDetailsService customUserDetailsService;
 
     @Autowired
@@ -36,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public JwtAuthenticationFilter jwtAuthenticationFilter() {
         return new JwtAuthenticationFilter();
     }
-    
+
     @Override
     public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder
@@ -57,20 +57,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-    	System.out.println("hahaahahahah");
+        System.out.println("hahaahahahah");
         http
                 .cors()
-                    .and()
+                .and()
                 .csrf()
-                    .disable()
+                .disable()
                 .exceptionHandling()
-                    .authenticationEntryPoint(unauthorizedHandler)
-                    .and()
+                .authenticationEntryPoint(unauthorizedHandler)
+                .and()
                 .sessionManagement()
-                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                    .and()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
                 .authorizeRequests()
-                    .antMatchers("/",
+                .antMatchers("/",
                         "/favicon.ico",
                         "/**/*.png",
                         "/**/*.gif",
@@ -79,21 +79,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.html",
                         "/**/*.css",
                         "/**/*.js")
-                        .permitAll()
-                    .antMatchers("/api/auth/**")
-                    .permitAll()
-                    .antMatchers("/api/post-types/**")
-                    .permitAll()
-                    .antMatchers("/api/doctor/**")
-                        .permitAll()
-                    .antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources", "/configuration/security", "/swagger-ui.html", "/webjars/**")
-                        .permitAll()
-                    .antMatchers("/9j/**")
-                        .permitAll()
-                    .antMatchers("/api/user/checkUsernameAvailability", "/api/user/checkEmailAvailability")
-                        .permitAll()
-                    .anyRequest()
-                        .authenticated();
+                .permitAll()
+                .antMatchers("/api/auth/**")
+                .permitAll()
+                .antMatchers("/api/post-types/**")
+                .permitAll()
+                .antMatchers("/api/doctor/**")
+                .permitAll()
+                .antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources", "/configuration/security", "/swagger-ui.html", "/webjars/**")
+                .permitAll()
+                .antMatchers("/9j/**")
+                .permitAll()
+                .antMatchers("/api/user/checkUsernameAvailability", "/api/user/checkEmailAvailability","/api/user/forgot")
+                .permitAll()
+                .anyRequest()
+                .authenticated();
 
         // Add our custom JWT security filter
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);

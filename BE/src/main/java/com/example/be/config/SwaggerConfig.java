@@ -1,19 +1,25 @@
 package com.example.be.config;
 
 import com.google.common.collect.Lists;
+
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.*;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.ApiKey;
+import springfox.documentation.service.AuthorizationScope;
+import springfox.documentation.service.Contact;
+import springfox.documentation.service.SecurityReference;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
-import java.util.Arrays;
-import java.util.List;
 
 //How to add token key in Swagger // how to add token key in swagger spring boot
 //https://javadeveloperzone.com/spring-boot/spring-swagger-add-static-header-to-all-rest-service/
@@ -22,7 +28,7 @@ import java.util.List;
 @EnableSwagger2
 public class SwaggerConfig {
 
-	@Bean
+    @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
@@ -33,17 +39,17 @@ public class SwaggerConfig {
                 .securitySchemes(Lists.newArrayList(apiKey()))
                 .securityContexts(Arrays.asList(securityContext()));
     }
-	
+
     private ApiInfo apiEndPointsInfo() {
         return new ApiInfoBuilder().title("Spring Boot REST API")
-            .description("BEATIFULL HOUSE REST API")
-            .contact(new Contact("Nguyen Kien", "kiennhhe163054@fpt.edu.vn", "kiennhhe163054@fpt.edu.vn"))
-            .license("Apache 2.0")
-            .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0")
-            .version("1.0.0")
-            .build();
+                .description("BEATIFULL HOUSE REST API")
+                .contact(new Contact("Vu Tuan", "tuanvahe141282@fpt.edu.vn", "tuanvahe141282@fpt.edu.vn"))
+                .license("Apache 2.0")
+                .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0")
+                .version("1.0.0")
+                .build();
     }
-	
+
     private ApiKey apiKey() {
         return new ApiKey("Bearer", "Authorization", "header");
     }
