@@ -25,7 +25,7 @@ import com.example.be.services.UserService;
 
 @RestController
 @RequestMapping("api/doctor")
- public class DoctorController {
+public class DoctorController {
 	@Autowired
 	UserService userservice;
 
