@@ -1,7 +1,7 @@
 package com.example.be.utils;
 
 public class Constant {
-	public static final String EMAIL = "vovantrinhdhbkdn@gmail.com";
+	public static final String EMAIL = "tuanvahe141282@fpt.edu.vn";
 	public static final String TEXT_CHANGE_PASSWORD = "Password Reset Request";
 	public static final String USER = "USER";
 	public static final String EXPERT = "EXPERT";
