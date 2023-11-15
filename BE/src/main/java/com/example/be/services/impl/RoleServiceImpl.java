@@ -1,5 +1,11 @@
 package com.example.be.services.impl;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+
 import com.example.be.dto.RoleRequest;
 import com.example.be.entities.Role;
 import com.example.be.exception.ResourceNotFoundException;
@@ -8,22 +14,17 @@ import com.example.be.payload.DataResponse;
 import com.example.be.repository.RoleRepository;
 import com.example.be.services.RoleService;
 import com.example.be.utils.Constant;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class RoleServiceImpl implements RoleService {
 
 	@Autowired
 	RoleRepository roleRepository;
-	
+
 	@Override
 	public DataResponse createRole(RoleRequest roleRequest) {
 		Role roleFindName =  getRoleByName(roleRequest.getName());
-		
+
 		if(roleFindName != null) {
 			return new DataResponse(false, new Data(Constant.NAME_ROLE_EXIST,HttpStatus.BAD_REQUEST.value()));
 		}else {
@@ -37,7 +38,7 @@ public class RoleServiceImpl implements RoleService {
 	@Override
 	public Role getRoleByName(String name) {
 		Role roles = roleRepository.findByName(name);
-		System.out.println(roles.toString());
+//		System.out.println(roles.toString());
 		if(roles!=null) {
 			return roles;
 		}
@@ -96,5 +97,5 @@ public class RoleServiceImpl implements RoleService {
 		}
 		return new DataResponse(false, new Data(Constant.ROLE_NOT_NULL_ID,HttpStatus.BAD_REQUEST.value()));
 	}
-	
+
 }

@@ -1,12 +1,15 @@
 package com.example.be.controller;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import com.example.be.dto.*;
+import com.example.be.entities.Role;
+import com.example.be.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,6 +46,8 @@ public class UserController {
 
 	@Autowired
 	PasswordEncoder passwordEncoder;
+	@Autowired
+	private UserRepository userRepository;
 
 	@RequestMapping(value= "/me", method = RequestMethod.GET, produces = "application/json")
 	public UserSummary getCurrentUser(@CurrentUser UserPrincipal currentUser) {
@@ -121,7 +126,13 @@ public class UserController {
 		String check ="";
 		UserResponse userResponse =  userservice.getUserByIdAndCheckRole(currentUser.getId());
 		if(userResponse.getRoles().size()==1) {
-			check = "USER";
+			List<Role> roles = new ArrayList<>(userResponse.getRoles());
+			if(roles.get(0).getName().equals("SUPER_ADMIN")){
+				check = "ADMIN";
+			}
+			else {
+				check = "USER";
+			}
 		}else if(userResponse.getRoles().size()==2 && userResponse.getClinic().size() == 0) {
 			check = "USER_EXPERT";
 		}else if(userResponse.getRoles().size()==2 && userResponse.getClinic().size() > 0) {
@@ -161,4 +172,11 @@ public class UserController {
 		return userservice.getAllUser();
 	}
 
+	@RequestMapping(value = "delete/{id}",method = RequestMethod.GET,produces = "application/json")
+	public DataResponse deleteUser(@PathVariable("id") String id){
+		User user = userRepository.findById(id).get();
+		user.setActive(false);
+		userRepository.save(user);
+		return userservice.getAllUser();
+	}
 }
