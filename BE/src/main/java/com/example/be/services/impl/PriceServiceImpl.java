@@ -1,5 +1,13 @@
 package com.example.be.services.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+
 import com.example.be.dto.PriceRequest;
 import com.example.be.entities.Clinic;
 import com.example.be.entities.Price;
@@ -8,22 +16,16 @@ import com.example.be.payload.DataResponse;
 import com.example.be.repository.ClinicRepository;
 import com.example.be.repository.PriceRepository;
 import com.example.be.services.PriceService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class PriceServiceImpl implements PriceService{
 
 	@Autowired
 	ClinicRepository clinicRepository;
-	
+
 	@Autowired
 	PriceRepository priceRepository;
-	
+
 	@Override
 	public DataResponse addPricesClinic(String idClinic, List<PriceRequest> priceRequests) {
 		Clinic clinic = clinicRepository.getOne(idClinic);
@@ -53,8 +55,23 @@ public class PriceServiceImpl implements PriceService{
 				return  new DataResponse(false, new Data("Lấy không tồn tại !",HttpStatus.BAD_REQUEST.value()));
 			}
 		}
-		
+
 		return  new DataResponse(false, new Data("Phòng khám không tồn tại !",HttpStatus.BAD_REQUEST.value()));
+	}
+
+	@Override
+	public DataResponse editPrice(PriceRequest priceRequest) {
+		Price price = priceRepository.findById(priceRequest.getId()).get();
+		price.setDescription(priceRequest.getDescription());
+		price.setTotalPrice(priceRequest.getTotalPrice());
+		priceRepository.save(price);
+		return new DataResponse(true, new Data("Chỉnh sửa thành công !!",HttpStatus.OK.value()));
+	}
+
+	@Override
+	public DataResponse deletePrice(String id) {
+		priceRepository.deleteById(id);
+		return new DataResponse(true, new Data("Chỉnh sửa thành công !!",HttpStatus.OK.value()));
 	}
 
 }

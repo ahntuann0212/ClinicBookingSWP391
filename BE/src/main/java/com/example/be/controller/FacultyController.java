@@ -1,24 +1,24 @@
 package com.example.be.controller;
 
-import com.example.be.entities.Faculty;
-import com.example.be.payload.Data;
-import com.example.be.payload.DataResponse;
-import com.example.be.services.FacultyService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import com.example.be.entities.Faculty;
+import com.example.be.payload.Data;
+import com.example.be.payload.DataResponse;
+import com.example.be.services.FacultyService;
 
 @RestController
 @RequestMapping("api/faculties")
 public class FacultyController {
-	
+
 	@Autowired
 	FacultyService facultyService;
-	
+
 	@RequestMapping(method = RequestMethod.GET, produces = "application/json")
 	public DataResponse getAllFaculty(){
 		List<Faculty> faculties =   facultyService.getAll();
