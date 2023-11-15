@@ -1,10 +1,10 @@
 package com.example.be.utils;
 
 public class CheckNumber {
-	
+
 	public static boolean checkNumber(String code) {
 		char [] arrayCode = code.toCharArray();
-		
+
 		if(arrayCode[0] == '0') {
 			return false;
 		}

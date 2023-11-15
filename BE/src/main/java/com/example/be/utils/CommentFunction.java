@@ -11,7 +11,7 @@ public class CommentFunction {
 
 	public static List<CommentResponse> getCommentDoctor(List<Comment> commentExperts) {
 		List<CommentResponse> commentResponses =new ArrayList<CommentResponse>();
-		
+
 		for (Comment item : commentExperts) {
 			CommentResponse response = new CommentResponse();
 			response.setId(item.getId());
@@ -20,14 +20,14 @@ public class CommentFunction {
 			response.setUpdateAt(item.getUpdateAt());
 			response.setCreatedBy(item.getCreatedBy());
 			response.setUpdatedBy(item.getUpdatedBy());
-			
+
 			Attachment attachment = AttacchmetFunction.getAttachmentPerson(item.getUser().getAttachments(), "DAIDIEN");
 			response.setAttachment(attachment);
-			
+
 			commentResponses.add(response);
 		}
-		
+
 		return commentResponses;
 	}
-	
+
 }
