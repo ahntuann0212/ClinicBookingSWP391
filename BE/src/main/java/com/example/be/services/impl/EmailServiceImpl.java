@@ -19,8 +19,7 @@ import com.example.be.repository.UserRepository;
 import com.example.be.services.EmailService;
 import com.example.be.services.UserService;
 import com.example.be.utils.Constant;
-// muốn send mail phải bất chế độ bên gmail
-//http://toidicodeo.blogspot.com/2018/10/1.html
+
 @Service
 public class EmailServiceImpl implements EmailService{
 

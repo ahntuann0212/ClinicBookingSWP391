@@ -61,7 +61,6 @@ public class BookingController {
 	@RequestMapping(value="/send-email", method = RequestMethod.POST)
 	public ResponseEntity<?> sendMailBooking(@CurrentUser UserPrincipal currentUser,@Valid @RequestBody BookingRequestUpdate bookingRequestUpdate){
 		emailService.sendEmailBookingClient(bookingRequestUpdate);
-
 		emailService.sendEmailBookingDoctor(bookingRequestUpdate);
 		return ResponseEntity.ok().body(new ApiResponse(true, "send mail success !!"));
 	}
